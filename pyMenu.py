@@ -36,17 +36,22 @@ for i in x:
        console.print(str(j) + "." + i, justify="center")
        dictList.update({str(j): i})
        j+=1
-# Prompts user for choice 
-choice = input("Enter a number to launch script or 0 to quit to terminal---> ")
-numChoice = int(choice)
-if (choice == 0):
+# Prompts user for choice
+try:
+    choice = input("Enter a number to launch script or 0 to quit to terminal---> ")
+    numChoice = int(choice)
+
+    if (choice == 0):
+        quit()
+    elif (numChoice > 0):
+        os.system("./" + dictList.get(choice))
+except TypeError:
+    print("Invalid Selection")
     quit()
-elif (numChoice > 0):
-    os.system("./" + dictList.get(choice))
+except ValueError:
+    print("Invalid Selection")
+    quit()
 
-
-
-#print(f"{dictList}")
 
 
 
